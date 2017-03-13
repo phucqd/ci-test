@@ -1,5 +1,4 @@
 build:
-  #image: framgia/ruby-workspace-ci
   #image: octoberstorm/rubycap
   image: octoberstorm/rails-base
   #pull: true
