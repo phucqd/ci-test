@@ -29,4 +29,3 @@ compose:
 cache:
   mount:
     - .git
-
