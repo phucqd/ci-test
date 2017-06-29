@@ -15,6 +15,8 @@ deploy:
 compose:
   database:
     image: mysql:5.7
+    # command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES UTF8; SET CHARACTER SET utf8mb4;'
     environment:
       MYSQL_DATABASE: ci_test
       MYSQL_USER: test

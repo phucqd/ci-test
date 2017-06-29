@@ -1,13 +1,14 @@
 FROM ubuntu:14.04.5
 
-# turn on universe packages
-#RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
+RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/ftp.jaist.ac.jp\/pub\/Linux/g' /etc/apt/sources.list
+
 RUN apt-get update
 
 # basics
-RUN apt-get install -y nginx openssh-server git-core openssh-client curl
-RUN apt-get install -y nano
+RUN apt-get install -y nginx openssh-server git-core openssh-client curl nano nodejs npm
 RUN apt-get install -y build-essential libmysqlclient-dev
+
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # install RVM, Ruby, and Bundler
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
@@ -16,8 +17,6 @@ RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash /etc/profile.d/rvm.sh
 RUN /bin/bash -l -c "rvm install 2.3.1"
 RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
-
-RUN apt-get update && apt-get install --yes nodejs
 
 COPY Gemfile /cache/Gemfile
 COPY Gemfile.lock /cache/Gemfile.lock
