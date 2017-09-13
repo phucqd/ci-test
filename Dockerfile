@@ -1,8 +1,8 @@
 FROM ubuntu:14.04.5
 
-RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/ftp.jaist.ac.jp\/pub\/Linux/g' /etc/apt/sources.list
+#RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/ftp.jaist.ac.jp\/pub\/Linux/g' /etc/apt/sources.list
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 
 # basics
 RUN apt-get install -y nginx openssh-server git-core openssh-client curl nano nodejs npm
