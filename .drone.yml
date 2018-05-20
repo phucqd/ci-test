@@ -5,7 +5,6 @@ build:
   #pull: true
   commands:
     - sudo start redis
-    - sleep 15
     - cp config/database-ci.yml config/database.yml
     - /bin/bash -c "source /etc/profile.d/rvm.sh && bundle install && RAILS_ENV=test rake db:create db:migrate && framgia-ci run"
 
