@@ -17,4 +17,4 @@ deploy:
   docker:
     username: octocat
     password: password
-    email: dangminhtruong@github.com
+    email: dangminh@github.com
