@@ -1,13 +1,10 @@
 build:
   phpunit:
-    image: framgia/laravel-workspace
+    image: octoberstorm/rails-base
     commands:
-    - composer install
-    - vendor/bin/phpunit
-  phpcs:
-    image: dangminhtruong/dockerlaravel
-    commands:
-    - phpcs app
+    - sudo start redis
+    - sleep 15
+    - cp config/database-ci.yml config/database.yml
 compose:
   database:
     image: mysql
